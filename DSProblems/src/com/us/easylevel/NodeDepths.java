@@ -36,7 +36,7 @@ package com.us.easylevel;
 public class NodeDepths {
 
 	// Average case : When tree is balanced
-	// O(n) time complexity and O(h) space complexity. n is Number of nodes and h is height of binary tree.
+	// O(n) time complexity and O(h) space complexity. n is Number of nodes and h is height of binary tree.'
 	public static int nodeDepths(BinaryTree root) {
 		return nodeDepthsCalculator(root, 0);
 	}
