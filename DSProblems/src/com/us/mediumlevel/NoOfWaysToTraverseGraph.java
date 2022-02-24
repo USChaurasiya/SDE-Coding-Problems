@@ -48,7 +48,7 @@ public class NoOfWaysToTraverseGraph {
 	private static int factorial(int number) {
 		int result = 1;
 		for(int i=2; i<number+1; i++) {
-			result *= number;
+			result *= i;
 		}
 		return result;
 	}
