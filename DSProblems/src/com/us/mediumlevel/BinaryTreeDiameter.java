@@ -35,6 +35,20 @@ package com.us.mediumlevel;
  */
 public class BinaryTreeDiameter {
 	
+	public static void main(String[] args) {
+		var root = new BinaryTreeDiameter.BinaryTree(1);
+	    root.left = new BinaryTreeDiameter.BinaryTree(3);
+	    root.left.left = new BinaryTreeDiameter.BinaryTree(7);
+	    root.left.left.left = new BinaryTreeDiameter.BinaryTree(8);
+	    root.left.left.left.left = new BinaryTreeDiameter.BinaryTree(9);
+	    root.left.right = new BinaryTreeDiameter.BinaryTree(4);
+	    root.left.right.right = new BinaryTreeDiameter.BinaryTree(5);
+	    root.left.right.right.right = new BinaryTreeDiameter.BinaryTree(6);
+	    root.right = new BinaryTreeDiameter.BinaryTree(3);
+	   
+	    System.out.println("Diameter of Binary Tree is : "+ binaryTreeDiameter(root));
+	}
+	
 	public static class BinaryTree{
 		int value;
 		BinaryTree left = null;
@@ -56,11 +70,11 @@ public class BinaryTreeDiameter {
 	}
 
 	// O(n) Time and O(h) Space Complexity
-	public int binaryTreeDiameter(BinaryTree tree) {
+	public static int binaryTreeDiameter(BinaryTree tree) {
 		return getTreeInfo(tree).diameter;
 	}
 	
-	public TreeInfo getTreeInfo(BinaryTree tree) {
+	public static TreeInfo getTreeInfo(BinaryTree tree) {
 		if(tree==null) return new TreeInfo(0, 0);
 		
 		TreeInfo leftTreeInfo = getTreeInfo(tree.left);
