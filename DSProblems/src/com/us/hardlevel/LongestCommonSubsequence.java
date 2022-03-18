@@ -65,7 +65,6 @@ public class LongestCommonSubsequence {
 		return sequence;
 	}
 	
-	
 	// Solution 2: O(nm) Time and O(nm) Space complexity
 	public static List<Character> longestCommonSubSequence(String str1, String str2) {
 		int[][][] lcs = new int[str2.length() + 1][str1.length() + 1][];
@@ -107,5 +106,4 @@ public class LongestCommonSubsequence {
 		}
 		return sequence;
 	}
-
 }
