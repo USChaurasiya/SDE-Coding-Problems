@@ -28,7 +28,7 @@ public class LongestCommonSubsequence {
 		String s2 = "XKYKZPW";
 
 		System.out.println("Longest Common Subsequence of Given Strings are : ");
-		longestCommonSubsequence(s1, s2).forEach(x -> System.out.print(x + " "));
+		longestCommonSubSequence(s1, s2).forEach(x -> System.out.print(x + " "));
 	}
 
 	// Solution 1: O(nm) Time and O(nm) Space complexity
@@ -64,5 +64,46 @@ public class LongestCommonSubsequence {
 		}
 		return sequence;
 	}
+	
+	// Solution 2: O(nm) Time and O(nm) Space complexity
+	public static List<Character> longestCommonSubSequence(String str1, String str2) {
+		int[][][] lcs = new int[str2.length() + 1][str1.length() + 1][];
+		for (int i = 0; i < str2.length() + 1; i++) {
+			for (int j = 0; j < str1.length() + 1; j++) {
+				lcs[i][j] = new int[] { 0, 0, 0, 0 };
+			}
+		}
+		for (int i = 1; i < str2.length() + 1; i++) {
+			for (int j = 1; j < str1.length() + 1; j++) {
+				if (str2.charAt(i - 1) == str1.charAt(j - 1)) {
+					int[] newEntry = { (int) str2.charAt(i - 1), lcs[i - 1][j - 1][1] + 1, i - 1, j - 1 };
+					lcs[i][j] = newEntry;
+				} else {
+					if (lcs[i - 1][j][1] > lcs[i][j - 1][1]) {
+						int[] newEntry = { -1, lcs[i - 1][j][1], i - 1, j };
+						lcs[i][j] = newEntry;
+					} else {
+						int[] newEntry = { -1, lcs[i][j - 1][1], i, j - 1 };
+						lcs[i][j] = newEntry;
+					}
+				}
+			}
+		}
+		return buildSequence(lcs);
+	}
 
+	public static List<Character> buildSequence(int[][][] lcs) {
+		List<Character> sequence = new ArrayList<Character>();
+		int i = lcs.length - 1;
+		int j = lcs[0].length - 1;
+		while (i != 0 && j != 0) {
+			int[] currentEntry = lcs[i][j];
+			if (currentEntry[0] != -1) {
+				sequence.add(0, (char) currentEntry[0]);
+			}
+			i = currentEntry[2];
+			j = currentEntry[3];
+		}
+		return sequence;
+	}
 }
