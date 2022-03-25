@@ -12,10 +12,50 @@ import java.util.Map;
  *	2: Retrieving a key's value with the getValueFromKey method.
  *	3: Retrieving the most recently used key with the getMostRecentKey method.
  *
+ *	LRUCache should have maxSize property to set the size of cache, this size represents 
+ *	the maximum number of key value pair that the cache can store at once. if the key-value 
+ *	pair is inserted in the cache when it has reached maximum capacity, the least recent used 
+ *	key-value pair should be evicted from the cache and no longer retrievable.
+ *
+ *	Inserting a key-value pair with an existing key should simple replace the key's value in 
+ *	the cache with new value.
+ *
+ *
+ *
+ *Sample Use Case:
+ *
+ *	LRUCache(3)
+ *	insertKeyValuePair("b", 2)
+ *	insertKeyValuePair("a", 1)
+ *	insertKeyValuePair("c", 3)
+ *	getMostRecentKey()   ---> "c"   c is the most recent key
+ *	getValueFromKey("a") ---> 1
+ *	getMostRecentKey()   ---> "a"   a is the most recent retrieved key
+ *	insertKeyValuePair("d", 4)      cache has 3 entries the lease recently used one is evicted
+ *	getValueFromKey("b") ---> None  b was evicted in previous operation
+ *	insertKeyValuePair("a", 5)    	a already exist in the cache so its value will be replaced
+ *	getValueFromKey("a") ---> 5
+ *	
  * 
  * ----------------------------------------------------------------------------------------
  */
 public class LRUCacheImpl {
+	
+	public static void main(String[] args) {
+		
+		LRUCache lruCache = new  LRUCache(3);
+	    lruCache.insertKeyValuePair("b", 2);
+	    lruCache.insertKeyValuePair("a", 1);
+	    lruCache.insertKeyValuePair("c", 3);
+	    System.out.println(lruCache.getMostRecentKey());
+	    System.out.println(lruCache.getValueFromKey("a").value);
+	    System.out.println(lruCache.getMostRecentKey());
+	    lruCache.insertKeyValuePair("d", 4);
+	    var evictedValue = lruCache.getValueFromKey("b");
+	    System.out.println(evictedValue == null || evictedValue.found == false);
+	    lruCache.insertKeyValuePair("a", 5);
+	    System.out.println(lruCache.getValueFromKey("a").value);
+	}
 
 	static class LRUCache {
 		int maxSize;
