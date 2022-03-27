@@ -66,7 +66,8 @@ public class LRUCacheImpl {
 		public LRUCache(int maxSize) {
 			this.maxSize = maxSize > 1 ? maxSize : 1;
 		}
-
+		
+		// O(1) Time Complexity 
 		public void insertKeyValuePair(String key, int value) {
 			if (!cache.containsKey(key)) {
 				if (currentSize == maxSize) {
@@ -81,6 +82,7 @@ public class LRUCacheImpl {
 			updateMostRecent(cache.get(key));
 		}
 
+		// O(1) Time Complexity
 		public LRUResult getValueFromKey(String key) {
 			if (!cache.containsKey(key)) {
 				return new LRUResult(false, -1);
