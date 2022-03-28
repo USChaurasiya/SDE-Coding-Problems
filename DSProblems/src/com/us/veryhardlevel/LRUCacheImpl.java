@@ -36,7 +36,6 @@ import java.util.Map;
  *	insertKeyValuePair("a", 5)    	a already exist in the cache so its value will be replaced
  *	getValueFromKey("a") ---> 5
  *	
- * 
  * ----------------------------------------------------------------------------------------
  */
 public class LRUCacheImpl {
@@ -44,17 +43,18 @@ public class LRUCacheImpl {
 	public static void main(String[] args) {
 		
 		LRUCache lruCache = new  LRUCache(3);
+		System.out.println("---------- LRU Cache ---------");
 	    lruCache.insertKeyValuePair("b", 2);
 	    lruCache.insertKeyValuePair("a", 1);
 	    lruCache.insertKeyValuePair("c", 3);
-	    System.out.println(lruCache.getMostRecentKey());
-	    System.out.println(lruCache.getValueFromKey("a").value);
-	    System.out.println(lruCache.getMostRecentKey());
+	    System.out.println("Fetching most recent Key : "+lruCache.getMostRecentKey());
+	    System.out.println("Getting value from Cache with Key (a)  :"+lruCache.getValueFromKey("a").value);
+	    System.out.println("Fetching most recent Key : "+lruCache.getMostRecentKey());
 	    lruCache.insertKeyValuePair("d", 4);
 	    var evictedValue = lruCache.getValueFromKey("b");
 	    System.out.println(evictedValue == null || evictedValue.found == false);
 	    lruCache.insertKeyValuePair("a", 5);
-	    System.out.println(lruCache.getValueFromKey("a").value);
+	    System.out.println("Getting value from Cache with Key (a)  :"+lruCache.getValueFromKey("a").value);
 	}
 
 	static class LRUCache {
