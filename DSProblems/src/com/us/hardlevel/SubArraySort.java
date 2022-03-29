@@ -29,6 +29,7 @@ public class SubArraySort {
 		}
 	}
 
+	// O(n) Time and O(1) Space Complexity
 	public static int[] subarraySort(int[] array) {
 		int minOutOfOrder = Integer.MAX_VALUE;
 		int maxOutOfOrder = Integer.MIN_VALUE;
