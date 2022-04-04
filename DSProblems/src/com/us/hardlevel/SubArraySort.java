@@ -64,5 +64,4 @@ public class SubArraySort {
 		}
 		return num > array[i + 1] || num < array[i - 1];
 	}
-
 }
