@@ -24,7 +24,6 @@ import java.util.List;
  * 		[1  2  3  4  5  6  7  8  9  10  11  12  13  14  15  16]
  * 
  * -----------------------------------------------------------------------------------
- *
  */
 public class ZigzagTraverse {
 
@@ -36,7 +35,7 @@ public class ZigzagTraverse {
 		inputArray.add(new ArrayList<Integer>(Arrays.asList(6, 8, 12, 15)));
 		inputArray.add(new ArrayList<Integer>(Arrays.asList(7, 13, 14, 16)));
 
-		System.out.println("Zigzag traversal result of input Matrix is : ");
+		System.out.println("Zigzag traversal of given 2D array is : ");
 		List<Integer> result = zigzagTraverse(inputArray);
 		result.forEach(x -> System.out.print(x + "  "));
 	}
