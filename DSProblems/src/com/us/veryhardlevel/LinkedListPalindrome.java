@@ -30,7 +30,7 @@ public class LinkedListPalindrome {
 		head.next.next.next.next = new LinkedList(1);
 		head.next.next.next.next.next = new LinkedList(0);
 
-		boolean isPalindrome = isPalindrome(head);
+		boolean isPalindrome = linkedListPalindrome(head);
 
 		System.out.println("Is given LinkedList is Palindrome : " + isPalindrome);
 	}
@@ -81,6 +81,31 @@ public class LinkedListPalindrome {
 	}
 	
 	// Solution 2: O(n) Time and O(n) Space Complexity
-	
-	// TBD
+	public static boolean linkedListPalindrome(LinkedList head) {
+		LinkedListInfo isPalindromeResult = isPalindrome(head, head);
+		return isPalindromeResult.outerNodesAreEqual;
+	}
+
+	static class LinkedListInfo {
+		public boolean outerNodesAreEqual;
+		public LinkedList leftNodeToCompare;
+
+		public LinkedListInfo(boolean outerNodesAreEqual, LinkedList leftNodeToCompare) {
+			this.outerNodesAreEqual = outerNodesAreEqual;
+			this.leftNodeToCompare = leftNodeToCompare;
+		}
+	}
+
+	public static LinkedListInfo isPalindrome(LinkedList leftNode, LinkedList rightNode) {
+		if (rightNode == null)
+			return new LinkedListInfo(true, leftNode);
+
+		LinkedListInfo recursiveCallResult = isPalindrome(leftNode, rightNode.next);
+		LinkedList leftNodeToCompare = recursiveCallResult.leftNodeToCompare;
+		boolean outerNodesAreEqual = recursiveCallResult.outerNodesAreEqual;
+
+		boolean recursiveIsEqual = outerNodesAreEqual && (leftNodeToCompare.value == rightNode.value);
+		LinkedList nextLeftNodeToCompare = leftNodeToCompare.next;
+		return new LinkedListInfo(recursiveIsEqual, nextLeftNodeToCompare);
+	}
 }
