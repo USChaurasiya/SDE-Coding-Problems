@@ -23,9 +23,10 @@ public class TrapWater {
 	
 	public static void main(String[] args) {
 		int[] inputHeightsArray = { 0, 8, 0, 0, 5, 0, 0, 10, 0, 0, 1, 1, 0, 3 };
-		System.out.println("Surface area of the water trapped between pillers is : " + waterArea(inputHeightsArray));
+		System.out.println("Surface area of the water trapped between pillers is : " + trapWater(inputHeightsArray));
 	}
 
+	// Solution 1: O(n) Time and O(n) Space Complexity
 	public static int waterArea(int[] heights) {
 		int[] maxes = new int[heights.length];
 
@@ -54,5 +55,29 @@ public class TrapWater {
 
 		return totalWater;
 	}
+	
+	// Solution 2: O(n) Time and O(1) Space Complexity
+	public static int trapWater(int[] heights) {
 
+		if (heights.length == 0)
+			return 0;
+
+		var leftIdx = 0;
+		var rightIdx = heights.length - 1;
+		var leftMax = heights[leftIdx];
+		var rightMax = heights[rightIdx];
+		var surfaceArea = 0;
+		while (leftIdx < rightIdx) {
+			if (heights[leftIdx] < heights[rightIdx]) {
+				leftIdx++;
+				leftMax = Math.max(leftMax, heights[leftIdx]);
+				surfaceArea += leftMax - heights[leftIdx];
+			} else {
+				rightIdx--;
+				rightMax = Math.max(rightMax, heights[rightIdx]);
+				surfaceArea += rightMax - heights[rightIdx];
+			}
+		}
+		return surfaceArea;
+	}
 }
