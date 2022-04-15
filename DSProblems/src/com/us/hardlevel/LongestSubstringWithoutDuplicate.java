@@ -17,6 +17,7 @@ import java.util.Map;
  * 		"umash"
  *----------------------------------------------------------------------------------
  */
+
 public class LongestSubstringWithoutDuplicate {
 	
 	public static void main(String[] args) {
