@@ -49,10 +49,17 @@ import java.util.ArrayList;
  */
 public class StairCase {
 
+	public static void main(String[] args) {
+		int heightOfStair = 4;
+		int maxAllowedSteps = 2;
+		
+		System.out.println("Number of ways to reach on the top of stair of having "
+				+ heightOfStair+ " steps are : "+ staircaseTraversal(heightOfStair, maxAllowedSteps));
+	}
 	
 	
 	// Solution 1: O(n) Time and O(n) Space Complexity
-	public int staircaseTraversal(int height, int maxSteps) {
+	public static int staircaseTraversal(int height, int maxSteps) {
 		int currentNumberOfWays = 0;
 		ArrayList<Integer> wayToTop = new ArrayList<Integer>();
 		wayToTop.add(1);
@@ -68,5 +75,23 @@ public class StairCase {
 			wayToTop.add(currentNumberOfWays);
 		}
 		return wayToTop.get(height);
+	}
+	
+	// Solution 2: Recursive Approach
+	public static int stairCase(int height) {
+		if(height<2) return 1;
+		return stairCase(height-1)+stairCase(height-2);
+	}
+	
+	//Solution 3: Bottom Up Approach
+	public static int climbStairs(int height) {
+		
+		int dp[] = new int [height+1];
+		dp[0] = 1;
+		dp[1] = 1;
+		for(int i=2; i<= height; i++) {
+			dp[i] = dp[i-1]+dp[i-2];
+		}
+		return dp[height];
 	}
 }
