@@ -6,13 +6,18 @@ import java.util.Stack;
  * @author Uma Shankar
  * <pre>
  * -------------------------------------------------------------------------------------
- * Write a function which returns boolean (true/false) if the given parentheses is valid
- * or not.
+ * Given a string s containing just the characters '(', ')', '{', '}', '[' and ']',write 
+ * a function which returns boolean (true/false) if the given parentheses is valid or not.
+ * 
+ * An input string is valid if:
+ * Open brackets must be closed by the same type of brackets.
+ * Open brackets must be closed in the correct order.
  * 
  * 
+ * Input: s = "()[]{}"
+ * Output: true
  * 
  * -------------------------------------------------------------------------------------
- *
  */
 public class ValidParentheses {
 
