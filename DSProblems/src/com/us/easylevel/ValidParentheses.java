@@ -27,10 +27,10 @@ public class ValidParentheses {
 
 	public static void main(String[] args) {
 		String inputExpression = "()(agawg)[{()gawggaw})]";
-		System.out.println("Is given Expression valid : " + isValidParentheses(inputExpression));
+		System.out.println("Is given Expression valid : " + balancedBrackets(inputExpression));
 	}
 
-	// Solution 1: 
+	// Solution 1: O(n) Time Complexity
 	public static boolean isValidParentheses(String exp) {
 
 		Stack<Character> characters = new Stack<Character>();
