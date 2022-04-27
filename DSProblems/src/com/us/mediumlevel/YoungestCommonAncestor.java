@@ -1,5 +1,7 @@
 package com.us.mediumlevel;
 
+import java.util.HashMap;
+
 /**
  * @author Uma Shankar
  * <pre>
@@ -31,6 +33,17 @@ package com.us.mediumlevel;
  * --------------------------------------------------------------------------------------
  */
 public class YoungestCommonAncestor {
+
+	public static void main(String[] args) {
+		var trees = getTrees();
+		trees.get('A').addAsAncestor(new AncestralTree[] { trees.get('B'), trees.get('C') });
+		trees.get('B').addAsAncestor(new AncestralTree[] { trees.get('D'), trees.get('E') });
+		trees.get('D').addAsAncestor(new AncestralTree[] { trees.get('H'), trees.get('I') });
+		trees.get('C').addAsAncestor(new AncestralTree[] { trees.get('F'), trees.get('G') });
+
+		var youngestCommonAncestor = getYoungestCommonAncestor(trees.get('A'), trees.get('E'), trees.get('I'));
+		System.out.println("Youngest Common Ancestor is : " + youngestCommonAncestor.name);
+	}
 
 	// O(d) Time and O(1) Space Complexity where d is the depth of tree
 	public static AncestralTree getYoungestCommonAncestor(AncestralTree topAncestor, AncestralTree descendantOne,
@@ -80,5 +93,17 @@ public class YoungestCommonAncestor {
 				descendant.ancestor = this;
 			}
 		}
+	}
+
+	public static HashMap<Character, AncestralTree> getTrees() {
+		var trees = new HashMap<Character, AncestralTree>();
+		var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		for (char a : alphabet.toCharArray()) {
+			trees.put(a, new AncestralTree(a));
+		}
+
+		trees.get('A').addAsAncestor(
+				new AncestralTree[] { trees.get('B'), trees.get('C'), trees.get('D'), trees.get('E'), trees.get('F') });
+		return trees;
 	}
 }
