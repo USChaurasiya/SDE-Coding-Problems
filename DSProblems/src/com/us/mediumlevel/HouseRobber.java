@@ -30,6 +30,7 @@ public class HouseRobber {
 		System.out.println("Max Amount that can be rob tonight is : " + robHouse(nums));
 	}
 
+	// Solution 1: Linear Time Complexity O(n)
 	public static int robHouse(int[] nums) {
 		if (nums == null || nums.length == 0) {
 			return 0;
@@ -48,5 +49,19 @@ public class HouseRobber {
 			dp[i] = Math.max(nums[i] + dp[i - 2], dp[i - 1]);
 		}
 		return dp[nums.length - 1];
+	}
+	
+	
+	// Solution 2: Constant Space Complexity 
+	public static int houseRobber(int[] nums) {
+		int prev = 0;
+		int current = nums[0];
+		
+		for(int i=1; i<nums.length;i++) {
+			int temp = current;
+			current = Math.max(nums[i]+prev, current);
+			prev = temp;
+		}
+		return current;
 	}
 }
