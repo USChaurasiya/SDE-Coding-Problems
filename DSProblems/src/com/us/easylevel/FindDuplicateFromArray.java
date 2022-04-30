@@ -29,6 +29,7 @@ public class FindDuplicateFromArray {
 		findDuplicates(input).forEach(x -> System.out.print(x + " "));
 	}
 
+	// O(n) Time and O(1) Space Complexity
 	public static List<Integer> findDuplicates(int[] nums) {
 		List<Integer> result = new ArrayList<Integer>();
 		for (int i = 0; i < nums.length; i++) {
