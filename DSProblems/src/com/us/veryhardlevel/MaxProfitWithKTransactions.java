@@ -48,6 +48,4 @@ public class MaxProfitWithKTransactions {
 		return profits[k][prices.length - 1];
 	}
 
-	// Solution 2: O(nk) Time and O(n) Space Complexity
-	// TBD
 }
