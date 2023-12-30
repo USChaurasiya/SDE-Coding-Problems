@@ -25,6 +25,8 @@ Output: [0,1]
 public class TwoSum {
 	
 	// Time Complexity : O(n) Space Complexity : O(n)
+	// Logic : Use hash map to check for difference value, If difference doesn't exist then add index of last occurrence of a num to map, don’t use same element twice;
+
 	public static int[] twoSum(int[] nums, int target) {
 		Map<Integer, Integer> map = new HashMap<Integer, Integer>();
 		int[] res = new int[2];
