@@ -22,6 +22,7 @@ import java.util.Queue;
  * should have finished course 0, and to take course 0 you should also have
  * finished course 1. So it is impossible.
  */
+
 public class CourseSchedule {
 
 	// Time Complexity : O(V+E) Space Complexity : O(V+E)
