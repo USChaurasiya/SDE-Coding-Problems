@@ -24,14 +24,14 @@ Example 2:
 public class CountPaths {
 
 	// Time Complexity : O(r * c)  Space Complexity : O(r * c)
-	public int uniquePaths(int m, int n) {
+	public static int uniquePaths(int m, int n) {
 		// For Memoize Duplicate Function call.
 		Map<List<Integer>, Integer> memo = new HashMap<List<Integer>, Integer>();
 		int[][] grid = new int[m][n];
 		return uniquePaths(0, 0, grid, memo);
 	}
 
-	public int uniquePaths(int r, int c, int[][] grid, Map<List<Integer>, Integer> memo) {
+	public static int uniquePaths(int r, int c, int[][] grid, Map<List<Integer>, Integer> memo) {
 		// Checking OutOfBound Case
 		if (r == grid.length || c == grid[0].length) {
 			return 0;
@@ -47,6 +47,12 @@ public class CountPaths {
 		int res = uniquePaths(r + 1, c, grid, memo) + uniquePaths(r, c + 1, grid, memo);
 		memo.put(pos, res);
 		return res;
+	}
+	
+	public static void main(String[] args) {
+		int row = 3;
+		int col = 7;
+		System.out.println("Number of Unique Paths to Reach Bottom Right Corner are : "+ uniquePaths(row, col));
 	}
 
 }
