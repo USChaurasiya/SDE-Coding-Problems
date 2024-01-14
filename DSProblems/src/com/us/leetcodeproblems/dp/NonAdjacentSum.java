@@ -29,6 +29,7 @@ public class NonAdjacentSum {
 		}
 
 		int result = Math.max(nums.get(i) + nonAdjacentSum(nums, i + 2, memo), nonAdjacentSum(nums, i + 1, memo));
+		memo.put(i, result);
 		return result;
 	}
 
